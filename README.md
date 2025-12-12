@@ -1,2 +1,2 @@
-# flamengo-whatsapp-bot
+# flamengo-bot
 Bot flamenguista.
