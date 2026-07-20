@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 15 * * *"   # roda todo dia às 12:00 no Brasil (15:00 UTC)
   workflow_dispatch:       # permite rodar manualmente também
+    inputs:
+      teste_email:
+        description: "Enviar um e-mail de teste (placar do último jogo)?"
+        type: boolean
+        default: false
 
 jobs:
   run-bot:
@@ -22,7 +27,13 @@ jobs:
         run: npm ci
 
       - name: Run bot
-        run: node runOnce.js
+        run: |
+          if [ "${{ inputs.teste_email }}" = "true" ]; then
+            echo "🧪 Modo teste: enviando e-mail do último placar."
+            node testar.js --resultado
+          else
+            node runOnce.js
+          fi
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           FLAMENGO_TEAM_ID: ${{ secrets.FLAMENGO_TEAM_ID }}
