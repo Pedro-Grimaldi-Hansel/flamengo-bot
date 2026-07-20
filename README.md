@@ -1,6 +1,6 @@
 # flamengo-bot 🔴⚫
 
-Bot que avisa por e-mail sobre os jogos do **Clube de Regatas do Flamengo** — uma prévia enriquecida **antes** de cada jogo e o placar **depois** da partida.
+Bot que avisa por e-mail sobre os jogos do **Clube de Regatas do Flamengo** — uma prévia **antes** de cada jogo e o placar **depois** da partida.
 
 Fonte de dados: **[football-data.org](https://www.football-data.org/)** (plano **gratuito**, que cobre o **Campeonato Brasileiro Série A** e a **Copa Libertadores**).
 
@@ -17,7 +17,7 @@ Fonte de dados: **[football-data.org](https://www.football-data.org/)** (plano *
 
 ## O que o bot envia
 
-### 📨 Antes do jogo (prévia enriquecida)
+### 📨 Antes do jogo (prévia)
 
 As seções específicas **se adaptam à competição do próximo jogo** (Brasileirão ou Libertadores):
 
