@@ -1,0 +1,31 @@
+name: Flamengo Bot Daily
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # roda todo dia às 12:00 no Brasil (15:00 UTC)
+  workflow_dispatch:       # permite rodar manualmente também
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run bot
+        run: node runOnce.js
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          FLAMENGO_TEAM_ID: ${{ secrets.FLAMENGO_TEAM_ID }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
